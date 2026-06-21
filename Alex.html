@@ -1,0 +1,259 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALEX URBAN WEAR</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f5f5;
+}
+
+header{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1600&q=80');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:4rem;
+}
+
+.hero p{
+font-size:1.3rem;
+margin:15px 0;
+}
+
+.btn{
+display:inline-block;
+padding:15px 35px;
+background:#ff4d4d;
+color:white;
+text-decoration:none;
+border-radius:30px;
+}
+
+section{
+padding:60px 8%;
+}
+
+h2{
+text-align:center;
+margin-bottom:40px;
+font-size:2.2rem;
+}
+
+.productos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card img{
+width:100%;
+height:280px;
+object-fit:cover;
+}
+
+.card-content{
+padding:15px;
+}
+
+.precio{
+color:#28a745;
+font-size:1.3rem;
+font-weight:bold;
+}
+
+select, input{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:1px solid #ddd;
+border-radius:8px;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:12px;
+border:none;
+background:#25D366;
+color:white;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+}
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:40px;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+<div class="hero">
+
+<h1>ALEX URBAN WEAR</h1>
+
+<p>Camisetas Cuello Redondo Premium</p>
+
+<a href="#catalogo" class="btn">
+Ver Colección
+</a>
+
+</div>
+
+</header>
+
+<section id="catalogo">
+
+<h2>Catálogo de Camisetas</h2>
+
+<div class="productos" id="productos"></div>
+
+</section>
+
+<footer>
+
+<h3>ALEX URBAN WEAR</h3>
+<p>Moda moderna • Calidad premium • $10.00 cada camiseta</p>
+
+</footer>
+
+<script>
+
+const imagenes = [
+
+"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+"https://images.unsplash.com/photo-1503341504253-dff4815485f1",
+"https://images.unsplash.com/photo-1483985988355-763728e1935b",
+"https://images.unsplash.com/photo-1512436991641-6745cdb1723f",
+"https://images.unsplash.com/photo-1523398002811-999ca8dec234"
+
+];
+
+let html='';
+
+for(let i=1;i<=30;i++){
+
+let img = imagenes[i % imagenes.length];
+
+html += `
+
+<div class="card">
+
+<img src="${img}?auto=format&fit=crop&w=800&q=80">
+
+<div class="card-content">
+
+<h3>Camiseta Modelo ${i}</h3>
+
+<p>Cuello Redondo</p>
+
+<p class="precio">$10.00</p>
+
+<input type="text"
+id="nombre${i}"
+placeholder="Nombre del cliente">
+
+<select id="talla${i}">
+<option>S</option>
+<option>M</option>
+<option>L</option>
+</select>
+
+<button onclick="reservar(${i})">
+Reservar Ahora
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+document.getElementById("productos").innerHTML = html;
+
+function reservar(id){
+
+let nombre =
+document.getElementById("nombre"+id).value;
+
+let talla =
+document.getElementById("talla"+id).value;
+
+if(nombre==""){
+alert("Ingrese su nombre");
+return;
+}
+
+let mensaje =
+
+`🛒 NUEVO PEDIDO
+
+👤 Cliente: ${nombre}
+
+👕 Producto:
+Camiseta Modelo ${id}
+
+📏 Talla: ${talla}
+
+💵 Precio: $10.00`;
+
+window.open(
+
+`https://wa.me/593986509615?text=${encodeURIComponent(mensaje)}`,
+
+'_blank'
+
+);
+
+}
+
+</script>
+
+</body>
+</html>
+```
